@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semmozhiyan - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <span class="loading-text">Semmozhiyan</span>
+            </div>
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <p class="loading-message">Loading Portfolio...</p>
+        </div>
+    </div>
+
+    <!-- Space Background with Objects -->
+    <div class="space-objects">
+        <div class="space-object"></div>
+        <div class="space-object"></div>
+        <div class="space-object"></div>
+        <div class="space-object"></div>
+        <div class="space-object"></div>
+        <div class="space-object"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Portfolio</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-background">
+                <div class="particle" style="--delay: 0s; --duration: 8s;"></div>
+                <div class="particle" style="--delay: 2s; --duration: 12s;"></div>
+                <div class="particle" style="--delay: 4s; --duration: 10s;"></div>
+                <div class="particle" style="--delay: 6s; --duration: 14s;"></div>
+                <div class="particle" style="--delay: 1s; --duration: 9s;"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="typing-text" data-text="Semmozhiyan N S"></span></h1>
+                <p class="hero-subtitle">A student developer passionate about tech</p>
+                <p class="hero-description">
+                    Welcome to my portfolio! I'm currently studying computer science and 
+                    love building innovative solutions with modern technologies. 
+                    Explore my work and let's connect!
+                </p>
+                <div class="hero-buttons">
+                    <a href="projects.html" class="btn btn-primary">View My Work</a>
+                    <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="3">0</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="9">0</div>
+                        <div class="stat-label">Technologies Learned</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="31">0</div>
+                        <div class="stat-label">GitHub Commits</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Preview -->
+        <section class="featured-projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Some of my recent work that I'm excited to share</p>
+                <div class="featured-grid">
+                    <div class="featured-card">
+                        <div class="featured-image">
+                            <img src="https://via.placeholder.com/400x200/28a745/ffffff?text=Java+App" alt="Featured Project">
+                            <div class="featured-overlay">
+                                <a href="projects.html" class="featured-link">View Details</a>
+                            </div>
+                        </div>
+                        <div class="featured-content">
+                            <h3>Student Management System</h3>
+                            <p>A comprehensive Java application with SQL database integration for managing student records.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="featured-card">
+                        <div class="featured-image">
+                            <img src="https://via.placeholder.com/400x200/6f42c1/ffffff?text=Python+Analysis" alt="Featured Project">
+                            <div class="featured-overlay">
+                                <a href="projects.html" class="featured-link">View Details</a>
+                            </div>
+                        </div>
+                        <div class="featured-content">
+                            <h3>Data Analysis Dashboard</h3>
+                            <p>Python-based tool for data processing and visualization with interactive charts.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-cta">
+                    <a href="projects.html" class="btn btn-primary">View All Projects</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        ↑
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 [Semmozhiyan]. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

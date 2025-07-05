@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Space Background with Objects -->
+    <div class="space-objects">
+        <div class="space-object"></div>
+        <div class="space-object"></div>
+        <div class="space-object"></div>
+        <div class="space-object"></div>
+        <div class="space-object"></div>
+        <div class="space-object"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Portfolio</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="contact-section">
+            <div class="container">
+                <h1 class="page-title">Get In Touch</h1>
+                <p class="section-subtitle">I'd love to hear from you! Feel free to reach out for collaborations or just to say hello.</p>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Let's Connect</h3>
+                        <p>Whether you have a project idea, want to collaborate, or just want to chat about technology, I'm always excited to connect with fellow developers and tech enthusiasts.</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <h4>Email</h4>
+                                <p><a href="mailto:semmozhiyan40@gmail.com">semmozhiyan40@gmail.com</a></p>
+                            </div>
+                            <div class="contact-method">
+                                <h4>GitHub</h4>
+                                <p><a href="https://github.com/semmozhi-ctrl" target="_blank">github.com/semmozhi-ctrl</a></p>
+                            </div>
+                            <div class="contact-method">
+                                <h4>LinkedIn</h4>
+                                <p><a href="https://www.linkedin.com/in/semmozhiyan-n-s-aa7478296/" target="_blank">linkedin.com/in/semmozhiyan-n-s</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contact-form" action="https://formspree.io/f/mwpbjoad" method="POST">
+                            <input type="hidden" name="_subject" value="New message from Portfolio Contact Form">
+                            <input type="hidden" name="_next" value="thank-you.html">
+                            
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="6" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        ↑
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Semmozhiyan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
