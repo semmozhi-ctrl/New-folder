@@ -1,12 +1,40 @@
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile-specific optimizations
+    const isMobile = window.innerWidth <= 768;
+    const isTouchDevice = 'ontouchstart' in window;
+    
+    // Disable space objects on mobile for better performance
+    if (isMobile) {
+        const spaceObjects = document.querySelector('.space-objects');
+        if (spaceObjects) {
+            spaceObjects.style.display = 'none';
+        }
+        
+        // Reduce animation intensity on mobile
+        document.body.style.setProperty('--animation-scale', '0.5');
+    }
+    
+    // Enhanced mobile navigation
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
 
     if (navToggle && navMenu) {
+        // Add haptic feedback for mobile
         navToggle.addEventListener('click', function() {
+            if (navigator.vibrate && isTouchDevice) {
+                navigator.vibrate(50); // Short vibration
+            }
+            
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         });
 
         // Close mobile menu when clicking on a link
@@ -15,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
 
@@ -24,7 +53,33 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!isClickInsideNav && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
+                document.body.style.overflow = '';
             }
+        });
+        
+        // Close menu on orientation change
+        window.addEventListener('orientationchange', function() {
+            setTimeout(() => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }, 100);
+        });
+    }
+    
+    // Mobile touch improvements for buttons
+    if (isTouchDevice) {
+        const buttons = document.querySelectorAll('.btn, .social-btn, .nav-link');
+        buttons.forEach(button => {
+            button.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            button.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
         });
     }
 
