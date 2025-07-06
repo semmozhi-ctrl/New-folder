@@ -1008,72 +1008,47 @@ body {
     color: #4a90e2;
 }
 
-/* Enhanced Theme Toggle Button */
+/* Simple Theme Toggle */
 .theme-toggle {
-    background: linear-gradient(135deg, var(--nav-bg), var(--card-bg));
-    border: 2px solid transparent;
-    background-clip: padding-box;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    background: transparent;
+    border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 1rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 20px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.theme-toggle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, #4a90e2, #667eea);
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
 }
 
 .theme-toggle:hover {
-    transform: scale(1.1) rotate(180deg);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
-}
-
-.theme-toggle:hover::before {
-    opacity: 1;
-}
-
-.theme-toggle:hover .theme-icon {
-    color: white;
+    background: rgba(74, 144, 226, 0.1);
+    color: #4a90e2;
 }
 
 [data-theme="dark"] .theme-toggle .theme-icon::before {
-    content: "☀️";
+    content: "Light Mode";
 }
 
 [data-theme="light"] .theme-toggle .theme-icon::before,
 .theme-toggle .theme-icon::before {
-    content: "🌙";
+    content: "Dark Mode";
 }
 
 .theme-icon {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    z-index: 1;
+    transition: all 0.3s ease;
+    color: var(--text-color);
 }
 
 .theme-icon::before {
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     display: block;
-    font-size: 22px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
 }
 
 /* Hero section dark mode */
@@ -1175,139 +1150,118 @@ body {
     color: var(--card-bg);
 }
 
-/* Mobile nav dark mode */
+/* Mobile Navigation - Only affects mobile devices */
 @media (max-width: 768px) {
-    .nav-menu {
-        background-color: var(--nav-bg);
-        border: 1px solid var(--border-color);
-    }
-    
-    .theme-toggle {
-        margin-left: 0;
+    /* Show hamburger menu on mobile */
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
         position: relative;
+        z-index: 1001;
     }
     
-    /* Bottom Navigation Bar */
+    .nav-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-color);
+        margin: 3px 0;
+        transition: 0.3s;
+        border-radius: 2px;
+    }
+    
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    /* Hide desktop navigation on mobile */
     .nav-menu {
         position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 70px;
-        background: rgba(255, 255, 255, 0.95);
+        top: 70px;
+        right: -300px;
+        width: 250px;
+        height: calc(100vh - 70px);
+        background: var(--nav-bg);
         backdrop-filter: blur(20px);
-        border-top: 1px solid var(--border-color);
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        padding: 0 1rem;
-        transition: all 0.3s ease;
+        border-left: 1px solid var(--border-color);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 2rem 1rem;
+        transition: right 0.3s ease;
         z-index: 1000;
-        box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
     }
     
     .nav-menu.active {
-        bottom: 0;
+        right: 0;
     }
     
+    /* Mobile navigation links */
     .nav-link {
-        font-size: 0.8rem;
-        margin: 0;
-        padding: 0.5rem;
-        border-radius: 12px;
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        padding: 1rem;
+        border-radius: 8px;
         transition: all 0.3s ease;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-width: 60px;
-        position: relative;
-        color: var(--text-color);
-        opacity: 0.7;
-    }
-    
-    /* Add icons to navigation links */
-    .nav-link::before {
-        content: '';
-        font-size: 1.5rem;
-        margin-bottom: 0.2rem;
+        text-align: left;
         display: block;
-        line-height: 1;
-    }
-    
-    .nav-link[href="index.html"]::before,
-    .nav-link[href="../index.html"]::before,
-    .nav-link[href="/"]::before {
-        content: "🏠";
-    }
-    
-    .nav-link[href="about.html"]::before,
-    .nav-link[href="../about.html"]::before {
-        content: "👤";
-    }
-    
-    .nav-link[href="projects.html"]::before,
-    .nav-link[href="../projects.html"]::before {
-        content: "💼";
-    }
-    
-    .nav-link[href="contact.html"]::before,
-    .nav-link[href="../contact.html"]::before {
-        content: "📧";
+        width: 100%;
+        color: var(--text-color);
+        text-decoration: none;
+        border: 1px solid transparent;
     }
     
     .nav-link:hover,
     .nav-link.active {
         background: rgba(74, 144, 226, 0.1);
         color: #4a90e2;
-        opacity: 1;
-        transform: translateY(-2px);
+        border-color: rgba(74, 144, 226, 0.3);
     }
     
     .nav-link.active::after {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 4px;
-        height: 4px;
-        background: #4a90e2;
-        border-radius: 50%;
+        display: none;
     }
     
-    /* Dark mode bottom navigation */
-    [data-theme="dark"] .nav-menu {
-        background: rgba(45, 45, 45, 0.95);
-        border-top-color: var(--border-color);
+    /* Keep desktop theme toggle visible on mobile */
+    .theme-toggle {
+        display: flex;
     }
     
-    /* Add section spacing adjustments for mobile bottom nav */
-    .stats-section,
-    .featured-projects {
-        padding: 3rem 0;
+    /* Mobile overlay */
+    .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
     }
     
-    .featured-cta {
-        margin-bottom: 2rem;
+    .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible;
     }
-    
-    /* Scroll to top button positioning for bottom nav */
-    .scroll-to-top {
-        bottom: 90px; /* Position above bottom navigation */
-        right: 1rem;
-    }
-    
-    /* Add bottom padding to main content for bottom nav */
+}
+/* Mobile-specific layout adjustments - Only affects mobile */
+@media (max-width: 768px) {
+    /* Adjust main content padding for mobile */
     .main-content {
-        margin-top: 60px;
-        padding: 1rem 1rem 100px 1rem; /* Increased bottom padding for nav */
-        min-height: calc(100vh - 160px); /* Adjust for bottom nav */
-    }
-    
-    /* Ensure body allows for bottom navigation on mobile only */
-    body {
-        padding-bottom: 70px;
+        margin-top: 70px;
+        padding: 1rem;
+        min-height: calc(100vh - 140px);
     }
     
     /* Mobile container override */

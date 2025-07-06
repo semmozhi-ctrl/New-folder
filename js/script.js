@@ -14,40 +14,73 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reduce animation intensity on mobile
         document.body.style.setProperty('--animation-scale', '0.5');
     }
-    
+
     // Enhanced mobile navigation
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
+    const mobileOverlay = document.getElementById('mobile-overlay');
 
     if (navToggle && navMenu) {
-        // Add haptic feedback for mobile
+        // Toggle mobile menu
         navToggle.addEventListener('click', function() {
             if (navigator.vibrate && isTouchDevice) {
                 navigator.vibrate(50); // Short vibration
             }
             
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
+            const isActive = navMenu.classList.contains('active');
             
-            // Prevent body scroll when menu is open
-            if (navMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
+            if (isActive) {
+                closeMobileMenu();
             } else {
-                document.body.style.overflow = '';
+                openMobileMenu();
             }
         });
+
+        // Mobile overlay click to close menu
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener('click', closeMobileMenu);
+        }
 
         // Close mobile menu when clicking on a link
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-                document.body.style.overflow = '';
+                closeMobileMenu();
             });
         });
 
-        // Close mobile menu when clicking outside
+        function openMobileMenu() {
+            navMenu.classList.add('active');
+            navToggle.classList.add('active');
+            if (mobileOverlay) mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            if (mobileOverlay) mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Add setTheme function for mobile theme switching
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Update desktop theme toggle icon
+            const themeIcon = document.querySelector('.theme-icon');
+            if (themeIcon) {
+                if (theme === 'dark') {
+                    themeIcon.textContent = '☀️';
+                } else {
+                    themeIcon.textContent = '🌙';
+                }
+            }
+            
+            // Add transition effect
+            document.body.style.transition = 'all 0.3s ease';
+        }
         document.addEventListener('click', function(event) {
             const isClickInsideNav = navMenu.contains(event.target) || navToggle.contains(event.target);
             if (!isClickInsideNav && navMenu.classList.contains('active')) {
